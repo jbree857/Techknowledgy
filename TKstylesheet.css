@@ -1,0 +1,127 @@
+<style>
+
+    h1{
+        background: transparent;
+    }
+
+    #main { 
+        vertical-align: middle;
+    }
+
+    #title {
+        font-family: "Courier New", Courier, monospace;
+        color: #00FF00;
+        height: 90%; 
+        width: 100%;
+        padding-top: 12%;
+        text-align: center;
+
+    }
+
+    input {
+        background: transparent;
+    }
+
+    #search {
+        text-align: center;
+        padding-top: 1%;
+    }
+
+    .searchButton{
+        position: absolute;
+        width: 40px;
+        height: 40px;
+    }
+
+    #searchtext{
+        color: #00FF00;
+        width: 850px;
+        height: 40px;
+        border-style: double;
+        border-color: #404040;
+        font-size: 24px;
+        padding-left: 5px;
+    }
+
+    #searchtext:focus{
+        outline: 0;
+        border-color: #00FF00;
+    }
+
+    #filters {
+        position: relative;
+        padding-left: 15%;
+        vertical-align: middle;
+    }
+
+    .iphone{
+        padding-top: 7%;
+        position: absolute;
+        left: 140px;
+        height: auto;
+        width: 180px;
+    }
+
+    .tablet{
+        padding-top: 4%;
+        position: absolute;
+        left: 365px;
+        height: auto;
+        width: 140px;
+    }
+
+    .computer{
+        padding-top: 3%;
+        position: absolute;
+        left: 575px;
+        height: auto;
+        width: 260px;
+    }
+
+    .watch{
+        padding-top: 7%;
+        position: absolute;
+        left: 840px;
+        height: auto;
+        width: 200px;
+    }
+
+    footer{
+        position: absolute;
+        height: 5%;
+        width: 100%;
+        bottom: 0px;
+        padding-top: 3px;
+        background-color: #404040;
+    }
+
+    .settingsHome{
+        position: absolute;
+        height: auto;
+        width: 40px;
+        left: 0px;
+        padding-left: 10px;
+    }
+
+    .copyright{
+        position: absolute;
+        color: #00FF00;
+        text-align: right;
+        padding-top: 1.6%;
+        font-size: 70%;
+        right: 0px;
+        padding-right: 7.8%;
+    }
+
+    .footerText{
+        position: absolute;
+        font-family: "Courier New", Courier, monospace;
+        color: #00FF00;
+        text-align: right;
+        font-size: 70%;
+        padding-top: 1.7%;
+        right: 0px;
+    }
+
+
+</style>

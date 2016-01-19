@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="TKstylesheet.css">
+
+    <script>
+    $(document).ready(function(){
+
+      //$('#settings').hide();
+      //$('#main').hide();
+
+      if($('#main').is(":visible"))
+      {
+        $('#homeIcon').hide();
+        $('#settingsIcon').show();
+      }
+      else if ($('#settings').is(":visible"))
+      {
+        $('#homeIcon').show();
+        $('#settingsIcon').hide();
+      }
+
+      $('#iphoneIcon').on('mouseenter', function(event){
+
+            $('#iphoneIcon').attr("src", "Images/iphoneToggle.png");
+        });
+
+      $('#iphoneIcon').on('mouseleave', function(event){
+
+            $('#iphoneIcon').attr("src", "Images/iphone.png");
+        });
+
+      $('#tabletIcon').on('mouseenter', function(event){
+
+            $('#tabletIcon').attr("src", "Images/tabletToggled.png");
+        });
+
+      $('#tabletIcon').on('mouseleave', function(event){
+
+            $('#tabletIcon').attr("src", "Images/tablet.png");
+        });
+
+      $('#computerIcon').on('mouseenter', function(event){
+
+            $('#computerIcon').attr("src", "Images/computerToggle.png");
+        });
+
+      $('#computerIcon').on('mouseleave', function(event){
+
+            $('#computerIcon').attr("src", "Images/computer.png");
+        });
+
+      $('#watchIcon').on('mouseenter', function(event){
+
+            $('#watchIcon').attr("src", "Images/watchToggle.png");
+        });
+
+      $('#watchIcon').on('mouseleave', function(event){
+
+            $('#watchIcon').attr("src", "Images/watch.png");
+        });
+
+      $('#settingsIcon').on('mouseenter', function(event){
+
+            $('#settingsIcon').attr("src", "Images/settingsToggle.png");
+        });
+
+      $('#settingsIcon').on('mouseleave', function(event){
+
+            $('#settingsIcon').attr("src", "Images/settings.png");
+        });
+
+      $('#homeIcon').on('mouseenter', function(event){
+
+            $('#homeIcon').attr("src", "Images/homeToggle.png");
+        });
+
+      $('#homeIcon').on('mouseleave', function(event){
+
+            $('#homeIcon').attr("src", "Images/home.png");
+        });
+
+      $('#settingsIcon').on('click', function(event){
+
+            $('#main').fadeOut("slow");
+            $('#settingsIcon').fadeOut("slow");
+            $('#homeIcon').fadeIn("slow");
+        });
+
+      $('#homeIcon').on('click', function(event){
+
+            $('#main').fadeIn("slow");
+            $('#settingsIcon').fadeIn("slow");
+            $('#homeIcon').fadeOut("slow");
+            $('#searchtext').focus();
+        });
+
+      $('#searchBtn').on('mouseenter', function(event){
+
+            $('#searchBtn').attr("src", "Images/searchBtnToggle.png");
+        });
+
+      $('#searchBtn').on('mouseleave', function(event){
+
+            $('#searchBtn').attr("src", "Images/searchBtn.png");
+        });
+
+    });
+    </script>
+  </head>
+
+  <body style="background-color: #625D5D;">
+
+  <div id="main">
+
+    	<div id="title" class="container">
+    		<h1 style="font-size: 500%">Techknowledgy</h1>
+    	</div>
+
+    	<div id="search" class="container">
+    		<input id="searchtext" autofocus></input>
+        <img class="searchButton" id="searchBtn" src="Images/searchBtn.png">
+    	</div>
+
+      <div id="filters" class="container">
+        <img class="iphone" id="iphoneIcon" src="Images/iphone.png">
+        <img class="tablet" id="tabletIcon" src="Images/tablet.png">
+        <img class="computer" id="computerIcon" src="Images/computer.png">
+        <img class="watch" id="watchIcon" src="Images/watch.png">
+      </div>
+
+  </div>
+
+  <div id="settings">
+  </div>
+
+  </body>
+
+  <footer>
+    <img class="settingsHome" id="settingsIcon" src="Images/settings.png">
+    <img class="settingsHome" id="homeIcon" src="Images/home.png">
+    <p class="copyright">&copy;</p>
+    <p class="footerText">2016 Jeremy Breen</p>
+
+  </footer>
+
+</html>
