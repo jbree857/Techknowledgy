@@ -4,16 +4,21 @@
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="TKstylesheet.css">
 
     <script>
+
     $(document).ready(function(){
 
+      // Call the search function when a form is submitted
+      $(document).on('submit', 'form', search);
+      
       //$('#settings').hide();
       //$('#main').hide();
 
+      // If-else to setup the screen based on which screen is visible
       if($('#main').is(":visible"))
       {
         $('#homeIcon').hide();
@@ -25,6 +30,7 @@
         $('#settingsIcon').hide();
       }
 
+      // Functions that change images when moused over
       $('#iphoneIcon').on('mouseenter', function(event){
 
             $('#iphoneIcon').attr("src", "Images/iphoneToggle.png");
@@ -109,8 +115,31 @@
 
             $('#searchBtn').attr("src", "Images/searchBtn.png");
         });
-
     });
+
+    // Search function that sends the search data to the back end
+    var search = function(event) {
+      var form = $(this);
+        
+        var data = form.serialize();
+
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: data,
+
+            success: function(result){
+              
+              $('#main').fadeOut("slow");
+              $('#homeIcon').fadeIn("slow");
+              $('#settingsIcon').fadeOut("slow");
+            }
+        });
+        
+        event.preventDefault();
+        return false;
+    }
+
     </script>
   </head>
 
@@ -123,8 +152,11 @@
     	</div>
 
     	<div id="search" class="container">
-    		<input id="searchtext" autofocus></input>
-        <img class="searchButton" id="searchBtn" src="Images/searchBtn.png">
+        <form action="php/TK.php" method="get">
+        <input id="searchtext" type="text" name="searchtext" autofocus></input>
+    		<!-- <input id="searchtext" autofocus></input>
+        <img class="searchButton" id="searchBtn" src="Images/searchBtn.png"> -->
+        <input class="searchButton" id="searchBtn" type="image" src="Images/searchBtn.png" alt="Submit Form" />
     	</div>
 
       <div id="filters" class="container">
