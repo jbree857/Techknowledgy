@@ -119,7 +119,7 @@
 
     // Search function that sends the search data to the back end
     var search = function(event) {
-      var form = $(this);
+        var form = $(this);
         
         var data = form.serialize();
 
@@ -127,16 +127,19 @@
             url: form.attr('action'),
             type: form.attr('method'),
             data: data,
+	    dataType: "json",
 
             success: function(result){
-              
-              $('#main').fadeOut("slow");
-              $('#homeIcon').fadeIn("slow");
-              $('#settingsIcon').fadeOut("slow");
+	      
+              var searchResult = result['searchResult'];
+	      var search = result['search'];   
+		 
+              //$('#title').text(searchResult);
+              $('#title').text(search);
             },
-            error: function(jqXHR, textStatus, errorThrown){
-	      $('#title').text(errorThrown);
-	    }
+	    error: function (xhr, ajaxOptions, thrownError) {
+              $('#title').text(thrownError);
+            }
         });
         
         event.preventDefault();
