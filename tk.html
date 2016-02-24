@@ -133,7 +133,10 @@
               $('#main').fadeOut("slow");
               $('#homeIcon').fadeIn("slow");
               $('#settingsIcon').fadeOut("slow");
-            }
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+	      $('#title').text(errorThrown);
+	    }
         });
         
         event.preventDefault();
@@ -152,12 +155,13 @@
     	</div>
 
     	<div id="search" class="container">
-        <form action="php/TK.php" method="get">
-        <input id="searchtext" type="text" name="searchtext" autofocus></input>
+             <form action="PHP/TK.php" method="get">
+                 <input id="searchtext" type="text" name="searchtext" autofocus></input>
     		<!-- <input id="searchtext" autofocus></input>
         <img class="searchButton" id="searchBtn" src="Images/searchBtn.png"> -->
-        <input class="searchButton" id="searchBtn" type="image" src="Images/searchBtn.png" alt="Submit Form" />
-    	</div>
+                 <input class="searchButton" id="searchBtn" type="image" src="Images/searchBtn.png" alt="Submit Form" />
+    	     </form>
+	</div>
 
       <div id="filters" class="container">
         <img class="iphone" id="iphoneIcon" src="Images/iphone.png">

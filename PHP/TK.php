@@ -12,7 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET")
 	}
 	else
 	{
-		$searchResult = getResults($searchText);
+		$searchResult = 'Search text submitted';
+		//$searchResult = getResults($searchText);
 	}
 }
 else
