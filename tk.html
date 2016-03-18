@@ -131,11 +131,9 @@
 
             success: function(result){
 	      
-              var searchResult = result['searchResult'];
-	      var search = result['search'];   
+              var searchResult = result['searchResult'];  
 		 
-              //$('#title').text(searchResult);
-              $('#title').text(search);
+              $('#title').text(searchResult);
             },
 	    error: function (xhr, ajaxOptions, thrownError) {
               $('#title').text(thrownError);

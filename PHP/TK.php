@@ -4,15 +4,15 @@ $searchResult = 'null';
 
 if ($_SERVER["REQUEST_METHOD"] == "GET")
 {
-	$searchText = $_GET["searchquery"];
+	$searchResult = $_GET["searchquery"];
 
-	if ($searchResult == '')
+	if (empty($searchResult))
 	{
 		$searchResult = 'No search text submitted';
 	}
 	else
 	{
-		$searchResult = $searchText;
+		$searchResult = $searchResult;
 		//$searchResult = 'Search text submitted';
 		//$searchResult = getResults($searchText);
 	}
@@ -22,9 +22,8 @@ else
 	$searchResult = 'request was not GET';
 }
 $result =  array(
-	//"searchResult" => $searchResult,
-	"searchResult" => "stuff",
-	"search" => $searchResult
+
+	"searchResult" => $searchResult
 
 );
 
