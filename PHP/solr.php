@@ -19,9 +19,37 @@ else{
     print "Worked!";
 }
 
+# CODE FOR CLEARING CORE OF ALL DOCS ===>
+
+$deleteResponse = $client->deleteByQuery("*:*");
+
+$client->commit(true);
+
+print_r($deleteResponse->getResponse());
+
+# <=== END OF CODE FOR CLEARING CORE OF ALL DOCS
+
+# CODE FOR ADDING NEW DOC ===>
+
+#$doc = new SolrInputDocument();
+
+#$doc->addField('id', '090945');
+#$doc->addField('link', 'www.test.com');
+#$doc->addField('text', 'this is another test');
+
+#$updateResponse = $client->addDocument($doc);
+
+#$client->commit(true);
+
+#print_r($updateResponse->getResponse());
+
+# <=== END OF ADDING NEW DOC CODE
+
+# QUERYING DOCUMENTS CODE ===>
+
 #$query = new SolrQuery();
 
-#$query->setQuery('lucene');
+#$query->setQuery('george');
 
 #$query->setStart(0);
 
@@ -34,4 +62,6 @@ else{
 #$response = $query_response->getResponse();
 
 #print_r($response);
+
+# <=== END OF QUERYING DOCUMENTS CODE
 ?>
