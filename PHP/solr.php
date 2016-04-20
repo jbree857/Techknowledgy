@@ -1,6 +1,7 @@
 <?php
 
 $core = 'techknowledgy_core';
+#$core = 'demo';
 
 $options = array
 (
@@ -21,11 +22,11 @@ else{
 
 # CODE FOR CLEARING CORE OF ALL DOCS ===>
 
-$deleteResponse = $client->deleteByQuery("*:*");
+#$deleteResponse = $client->deleteByQuery("*:*");
 
-$client->commit(true);
+#$client->commit(true);
 
-print_r($deleteResponse->getResponse());
+#print_r($deleteResponse->getResponse());
 
 # <=== END OF CODE FOR CLEARING CORE OF ALL DOCS
 
@@ -47,21 +48,21 @@ print_r($deleteResponse->getResponse());
 
 # QUERYING DOCUMENTS CODE ===>
 
-#$query = new SolrQuery();
+$query = new SolrQuery();
 
-#$query->setQuery('george');
+$query->setQuery('technology');
 
-#$query->setStart(0);
+$query->setStart(0);
 
-#$query->setRows(50);
+$query->setRows(50);
 
-#$query->addField('cat')->addField('features')->addField('id')->addField('timestamp');
+$query->addField('url')->addField('title')->addField('host')->addField('content');
 
-#$query_response = $client->query($query);
+$query_response = $client->query($query);
 
-#$response = $query_response->getResponse();
+$response = $query_response->getResponse();
 
-#print_r($response);
+print_r($response);
 
 # <=== END OF QUERYING DOCUMENTS CODE
 ?>

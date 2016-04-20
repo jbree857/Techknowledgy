@@ -15,10 +15,10 @@
       // Call the search function when a form is submitted
       $(document).on('submit', 'form', search);
       
-      $('#settings').hide();
-      $('#main').hide();
-      $('footer').hide();
-      // $('#results').hide();
+      // $('#settings').hide();
+      // $('#main').hide();
+      // $('footer').hide();
+      $('#results').hide();
 
       // If-elses to setup the screen based on which screen is visible
       if($('#main').is(":visible"))
@@ -156,12 +156,12 @@
 
       $('#TKlogoresults').on('click', function(event){
 
-            loadResults();
-            // $('#results').hide();
-            // $('#main').fadeIn("slow");
-            // $('footer').fadeIn("slow");
-            // $('#homeIcon').hide();
-            // $('#searchtext').focus();
+            //loadResults();
+            $('#results').hide();
+            $('#main').fadeIn("slow");
+            $('footer').fadeIn("slow");
+            $('#homeIcon').hide();
+            $('#searchtext').focus();
         });
 
       $('#searchBtn').on('mouseenter', function(event){
@@ -187,9 +187,10 @@
 
     // Search function that sends the search data to the back end
     var search = function(event) {
-        $('#main').hide();
-        $('#search').attr()
-        $('#search').show();
+        //$('#main').hide();
+        //$('#search').attr()
+        //$('#search').show();
+        
         var form = $(this);
         
         var data = form.serialize();
@@ -201,13 +202,15 @@
 	    dataType: "json",
 
             success: function(result){
+             
+	      var searchResult = result['searchResult']; 
 	      
-              var searchResult = result['searchResult'];  
-		 
-              $('#title').text(searchResult);
+	      loadResults(searchResult.response.docs);
+            
             },
 	    error: function (xhr, ajaxOptions, thrownError) {
-              $('#title').text(thrownError);
+              $('#searchtextresults').val(thrownError);
+	      //loadResults(searchResult.response.docs);
             }
         });
         
@@ -217,30 +220,45 @@
 
     // Loading function that takes in the results from the server and creates
     // the results elements for the results page
-    var loadResults = function(event) {
+    var loadResults = function(results) {
+	if($('#main').is(":visible"))
+        {
+            $('#main').hide();
+            $('#results').show();  
+            $('#settingsIconResults').show();
+            $('#homeIconResults').hide();
+            $('footer').hide();
+            $('#searchtextresults').val($('#searchtext').val());
+            $('#searchtext').val('');
+        }
 
+	// Clear all previous results (if any) and reset page height
+	$('.webResult').remove();
         $('#results').height(1000);
 
-        $('#webResults').append("<div class='webResult'><a href='google.com' style='font-size:35px; color:#00FF00; font-family:Courier New, Courier, monospace;'>Sample title</a><p style='font-size:14; color:#FFFFFF'>This is a little sample text to see how much space it will take up ...This is a little sample text to see how much space it will take up ... This is a little sample text to see how much space it will take up ... This is a little sample text to see how much space it will take up ... This is a little sample text to see how much space it will take up ...</p><a style='font-size:16; color:#00FF00; font-family:Courier New, Courier, monospace;'href='google.com'>www.google.com</li><hr></div>");
+	// If there are no results, then let user know
+	if (results.length == 0)
+	{
+	   $('#webResults').append("<div class='webResult'><h1 style='font-size:24px; color:#00FF00; font-family:Courier New, Courier, monospace;'>No Results Found</h1></div>");
+	}
+	else
+	{
+             // Loop through all the results returned
+             for (var i = 0; i < results.length; i++) {
+               // Add result html element to page
+	       $('#webResults').append("<div class='webResult'><h1><a href='" + results[i].url + "' style='font-size:24px; color:#00FF00; font-family:Courier New, Courier, monospace;'>" + results[i].title + "</a></h1><p style='font-size:14; color:#FFFFFF'>" + results[i].content + "</p><a style='font-size:16; color:#00FF00; font-family:Courier New, Courier, monospace;' href='" + results[i].host + "'>" + results[i].host + "</a><hr></div>");
 
-        // Loop through all the results returned
-        // for (var i = 0; i < results.length(); i++) {
-        //   $('#webResults').append("<div class='webResult'>
-        //     <a href='" + data[i].url + "' style='font-size:35px; color:#00FF00; font-family:Courier New, Courier, monospace;'>" + data[i].title + "</h1>
-        //     <p style='font-size:14; color:#FFFFFF'>" + data[i].content + "</p>
-        //     <a style='font-size:16; color:#00FF00; font-family:Courier New, Courier, monospace;' href='" + data[i].host + "'>" + data[i].host + "</li>
-        //     <hr></div>");
+	       // Add to page height
+               $('#results').height( $('#results').height() + 75);
+	   };
+        }
 
-        //     $('#results').height( $('#results').height() + 200);
-        // };
-
-
-        $('#results').height( $('#results').height() + 200);
     }
 
     </script>
   </head>
 
+<div id="techknowledgy">
   <body style="background-color: #625D5D;">
 
   <div id="main">
@@ -250,7 +268,6 @@
     	<div id="title" class="container">
     		<h1 style="font-size: 500%">Techknowledgy</h1>
     	</div>
-
     	<div id="search" class="container">
              <form action="PHP/TK.php" method="get">
                  <input class="searchtext" id="searchtext" type="text" name="searchquery" autofocus></input>
@@ -275,7 +292,7 @@
       <div id="searchResults">
           <img id="TKlogoresults" src="Images/TKlogo.png">
              <form action="PHP/TK.php" method="get">
-                 <input class="searchtext" id="searchtextresults" type="text" name="searchqueryresults" autofocus></input>
+                 <input class="searchtext" id="searchtextresults" type="text" name="searchquery" autofocus></input>
                  <input class="searchButton" id="searchBtnResults" type="image" src="Images/searchBtn.png" alt="Submit Form" />
            </form>
            <img class="settingsHomeResults" id="settingsIconResults" src="Images/settings.png">
@@ -284,13 +301,14 @@
     </div>
      <div id="webResults" class="container">
         <div class="webResult">
-          <a href="google.com" style="font-size:35px; color:#00FF00; font-family:Courier New, Courier, monospace;">Sample title</a>
-          <p style="font-size:14; color:#FFFFFF">This is a little sample text to see how much space it will take up ...This is a little sample text to see how much space it will take up ... This is a little sample text to see how much space it will take up ... This is a little sample text to see how much space it will take up ... This is a little sample text to see how much space it will take up ...</p>
-          <a style="font-size:16; color:#00FF00; font-family:Courier New, Courier, monospace;"href="google.com">www.google.com</li>
-          <hr>
+          <!--<a href="google.com" style="font-size:35px; color:#00FF00; font-family:Couriier New, Courier, monospace;">Sample title</a>
+          <p id="sampleText" style="font-size:14; color:#FFFFFF">This is a little sample text to see how much space it will take up ...This is a little sample text to see how much space it will take up ... This is a little sample text to see how much space it will take up ... This is a little sample text to see how much space it will take up ... This is a little sample text to see how much space it will take up ...</p>
+          <a style="font-size:16; color:#00FF00; font-family:Courier New, Courier, monospace;" href="google.com">www.google.com</a>
+          <hr> -->
         </div>
      </div>
   </div>
+</div>
 
   </body>
 
