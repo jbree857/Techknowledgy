@@ -15,6 +15,11 @@
       // Call the search function when a form is submitted
       $(document).on('submit', 'form', search);
       
+      var filterMobile = false;
+      var filterTablet = false;
+      var filterComputer = false;
+      var filterWatch = false;
+
       // $('#settings').hide();
       // $('#main').hide();
       // $('footer').hide();
@@ -43,46 +48,92 @@
         $('#settingsIconResults').hide();
       }
 
-      // Functions that change images when moused over
-      $('#iphoneIcon').on('mouseenter', function(event){
+      // Functions that change images when clicked
+      $('#iphoneIcon').on('click', function(event){
 
-            $('#iphoneIcon').attr("src", "Images/iphoneToggle.png");
+            if ( $('#iphoneIcon').attr("src") == "Images/iphone.png")
+            {
+              $('#iphoneIcon').attr("src", "Images/iphoneToggle.png");
+              filterMobile = true;
+            }
+            else
+            {
+              $('#iphoneIcon').attr("src", "Images/iphone.png");
+              filterMobile = false;
+            }
         });
 
-      $('#iphoneIcon').on('mouseleave', function(event){
+      $('#tabletIcon').on('click', function(event){
 
-            $('#iphoneIcon').attr("src", "Images/iphone.png");
+            if ( $('#tabletIcon').attr("src") == "Images/tablet.png")
+            {
+              $('#tabletIcon').attr("src", "Images/tabletToggled.png");
+              filterTablet = true;
+            }
+            else
+            {
+              $('#tabletIcon').attr("src", "Images/tablet.png");
+              filterTablet = false;
+            }
         });
 
-      $('#tabletIcon').on('mouseenter', function(event){
+      $('#computerIcon').on('click', function(event){
 
-            $('#tabletIcon').attr("src", "Images/tabletToggled.png");
+            if ( $('#computerIcon').attr("src") == "Images/computer.png")
+            {
+              $('#computerIcon').attr("src", "Images/computerToggle.png");
+              filterComputer = true;
+            }
+            else
+            {
+              $('#computerIcon').attr("src", "Images/computer.png");
+              filterComputer = false;
+            }
         });
 
-      $('#tabletIcon').on('mouseleave', function(event){
+      $('#watchIcon').on('click', function(event){
 
-            $('#tabletIcon').attr("src", "Images/tablet.png");
+            if ( $('#watchIcon').attr("src") == "Images/watch.png")
+            {
+              $('#watchIcon').attr("src", "Images/watchToggle.png");
+              filterWatch = true;
+            }
+            else
+            {
+              $('#watchIcon').attr("src", "Images/watch.png");
+              filterWatch = false;
+            }
         });
 
-      $('#computerIcon').on('mouseenter', function(event){
+      // $('#tabletIcon').on('mouseenter', function(event){
 
-            $('#computerIcon').attr("src", "Images/computerToggle.png");
-        });
+      //       $('#tabletIcon').attr("src", "Images/tabletToggled.png");
+      //   });
 
-      $('#computerIcon').on('mouseleave', function(event){
+      // $('#tabletIcon').on('mouseleave', function(event){
 
-            $('#computerIcon').attr("src", "Images/computer.png");
-        });
+      //       $('#tabletIcon').attr("src", "Images/tablet.png");
+      //   });
 
-      $('#watchIcon').on('mouseenter', function(event){
+      // $('#computerIcon').on('mouseenter', function(event){
 
-            $('#watchIcon').attr("src", "Images/watchToggle.png");
-        });
+      //       $('#computerIcon').attr("src", "Images/computerToggle.png");
+      //   });
 
-      $('#watchIcon').on('mouseleave', function(event){
+      // $('#computerIcon').on('mouseleave', function(event){
 
-            $('#watchIcon').attr("src", "Images/watch.png");
-        });
+      //       $('#computerIcon').attr("src", "Images/computer.png");
+      //   });
+
+      // $('#watchIcon').on('mouseenter', function(event){
+
+      //       $('#watchIcon').attr("src", "Images/watchToggle.png");
+      //   });
+
+      // $('#watchIcon').on('mouseleave', function(event){
+
+      //       $('#watchIcon').attr("src", "Images/watch.png");
+      //   });
 
       $('#settingsIcon').on('mouseenter', function(event){
 
