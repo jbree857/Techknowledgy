@@ -22,11 +22,11 @@ else{
 
 # CODE FOR CLEARING CORE OF ALL DOCS ===>
 
-#$deleteResponse = $client->deleteByQuery("*:*");
+$deleteResponse = $client->deleteByQuery("*.htm*");
 
-#$client->commit(true);
+$client->commit(true);
 
-#print_r($deleteResponse->getResponse());
+print_r($deleteResponse->getResponse());
 
 # <=== END OF CODE FOR CLEARING CORE OF ALL DOCS
 
@@ -48,21 +48,21 @@ else{
 
 # QUERYING DOCUMENTS CODE ===>
 
-$query = new SolrQuery();
+#$query = new SolrQuery();
 
-$query->setQuery('technology');
+#$query->setQuery('technology');
 
-$query->setStart(0);
+#$query->setStart(0);
 
-$query->setRows(50);
+#$query->setRows(50);
 
-$query->addField('url')->addField('title')->addField('host')->addField('content');
+#$query->addField('url')->addField('title')->addField('host')->addField('content');
 
-$query_response = $client->query($query);
+#$query_response = $client->query($query);
 
-$response = $query_response->getResponse();
+#$response = $query_response->getResponse();
 
-print_r($response);
+#print_r($response);
 
 # <=== END OF QUERYING DOCUMENTS CODE
 ?>

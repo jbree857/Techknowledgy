@@ -33,6 +33,7 @@ else
 function getResults($userQuery) 
 {
 	$core = 'techknowledgy_core';
+		
 
 	$options = array
 	(
